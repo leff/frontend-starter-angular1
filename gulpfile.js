@@ -89,7 +89,10 @@ gulp.task('server', ['watch'], function() {
     }
   });
 
-  gulp.watch([`${destPath}/**/*`]).on('change', browserSync.reload);
+  // @TODO: this makes browserSync.reload watch every file and reload when each one changes.
+  // this seems to make .reload get called once for each file that get's touched.
+  // Since the watch task simply rebuilds everything on change, there's no easy way around this.
+  // gulp.watch([`${destPath}/**/*`]).on('change', browserSync.reload);
 });
 
 
